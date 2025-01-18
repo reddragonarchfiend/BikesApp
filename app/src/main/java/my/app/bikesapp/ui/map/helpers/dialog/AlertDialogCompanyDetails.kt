@@ -12,8 +12,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,15 +20,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import my.app.bikesapp.data.models.BikeCompany
 import my.app.bikesapp.ui.companies_list.BasicBikeData
+import my.app.bikesapp.ui.util.IconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun AlertDialogCompanyDetails(bikeCompany: BikeCompany? = null, userLocation: Pair<Double,Double>? = null, closeDialog: () -> Unit ={}){
+fun AlertDialogCompanyDetails(
+    bikeCompany: BikeCompany? = null,
+    userLocation: Pair<Double, Double>? = null,
+    closeDialog: () -> Unit = {}
+) {
 
 
-    BasicAlertDialog(onDismissRequest = {}){
-        Box{
+    BasicAlertDialog(onDismissRequest = {}) {
+        Box {
             Column(
                 Modifier.background(
                     shape = RoundedCornerShape(24.dp),
@@ -40,18 +43,14 @@ fun AlertDialogCompanyDetails(bikeCompany: BikeCompany? = null, userLocation: Pa
                 BasicBikeData(bikeCompany)
                 Spacer(Modifier.height(20.dp))
 
-                ShowDistance(userLocation,bikeCompany)
-                NavigateButton(bikeCompany,Modifier.align(Alignment.CenterHorizontally))
+                ShowDistance(userLocation, bikeCompany)
+                NavigateButton(bikeCompany, Modifier.align(Alignment.CenterHorizontally))
             }
 
-            IconButton(modifier = Modifier.align(Alignment.TopEnd), onClick = {
+            IconButton(onClick = {
                 closeDialog()
-            }) {
-                Icon(
-                    imageVector = Icons.Default.Close,
-                    contentDescription = null,
-                )
-            }
+            }, modifier = Modifier.align(Alignment.TopEnd),
+                icon = Icons.Default.Close)
 
         }
 

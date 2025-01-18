@@ -46,7 +46,7 @@ fun MapScreen(
         contract = ActivityResultContracts.StartIntentSenderForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            locationHandler.fetchLastLocation(onSuccess,onFailure)
+            locationHandler.fetchCurrentLocation(onSuccess,onFailure)
         } else {
             onFailure(null)
         }
@@ -64,7 +64,7 @@ fun MapScreen(
             showDetailsDialog = true
         },
         onPermissionGranted = {
-            locationHandler.fetchCurrentLocation(onSuccess,onFailure)
+            locationHandler.fetchLastLocation(onSuccess,onFailure)
         }
     )
 

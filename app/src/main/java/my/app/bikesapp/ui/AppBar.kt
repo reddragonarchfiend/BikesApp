@@ -4,8 +4,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
@@ -18,11 +16,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import my.app.bikesapp.ui.companies_list.BikeCompaniesViewModel
+import my.app.bikesapp.ui.util.IconButton
 import my.app.bikesapp.util.Const.HOME_SCREEN
 import my.app.bikesapp.util.Const.MAP_SCREEN
 import my.app.bikesapp.util.Const.SETTINGS_SCREEN
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(
     navBackStackEntry: NavBackStackEntry?,
@@ -82,20 +80,21 @@ fun TopAppBarPreview(
         }
     }, actions = {
         if (currentRoute == HOME_SCREEN) {
-            IconButton(onClick = {
-                navigateToSettings()
-            }) {
-                Icon(
-                    imageVector = Icons.Default.Settings,
-                    contentDescription = null,
-                )
-            }
+            IconButton(
+                onClick = {
+                    navigateToSettings()
+                },
+                icon = Icons.Default.Settings
+            )
         }
     }, navigationIcon = {
         if (canNavigateBack) {
-            IconButton(onClick = { navigateUp() }) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-            }
+            IconButton(
+                onClick = {
+                    navigateUp()
+                },
+                icon = Icons.AutoMirrored.Filled.ArrowBack
+            )
         }
     })
 }
