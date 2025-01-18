@@ -98,8 +98,8 @@ class LocationHandler(
             mapViewModel.setIsLoading(true)
             fusedLocationProviderClient.lastLocation
                 .addOnSuccessListener { location ->
+                    mapViewModel.setIsLoading(false)
                     location?.let {
-                        mapViewModel.setIsLoading(false)
                         onSuccess(Pair(it.latitude, it.longitude))
                     } ?: fetchCurrentLocation(onSuccess, onFailure)
                 }
