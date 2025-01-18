@@ -45,7 +45,6 @@ class LocationHandler(
                 onFailure(exception)
             }
         } else {
-            mapViewModel.setIsLoading(false)
             onFailure(null)
         }
     }
@@ -109,7 +108,6 @@ class LocationHandler(
                     onFailure(exception)
                 }
         } else {
-            mapViewModel.setIsLoading(false)
             onFailure(null)
         }
     }
