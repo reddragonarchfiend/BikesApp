@@ -1,0 +1,1 @@
+-keep,allowobfuscation,allowshrinking class my.app.bikesapp.ui.settings.SettingsViewModel
